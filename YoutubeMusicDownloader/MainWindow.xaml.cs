@@ -6,6 +6,7 @@ using YoutubeMusicDownloader.Models;
 using YoutubeExplode;
 using YoutubeExplode.Videos.Streams;
 using NReco.VideoConverter;
+using System.ComponentModel;
 
 namespace YoutubeMusicDownloader
 {
@@ -67,6 +68,11 @@ namespace YoutubeMusicDownloader
             pathFive.IsEnabled = !pathFive.IsEnabled;
             pathSix.IsEnabled = !pathSix.IsEnabled;
             Status.Visibility = Status.Visibility == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
+        }
+
+        public void AppClosing(object sender, CancelEventArgs e)
+        {
+            Environment.Exit(0);
         }
         public string GetFilenameWithoutSpecialCharacters(string name)
         {

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YoutubeMusicDownloader"
         mc:Ignorable="d"
-        Title="Youtube Music Downloader" Height="150" Width="1200">
+        Title="Youtube Music Downloader" Height="150" Width="1200"
+        Closing="AppClosing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="41*"/>
