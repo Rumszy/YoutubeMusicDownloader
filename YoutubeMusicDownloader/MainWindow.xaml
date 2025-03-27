@@ -5,22 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YoutubeMusicDownloader"
         mc:Ignorable="d"
-        Title="YoutubeMusicDownloader" Height="150" Width="1200">
+        Title="Youtube Music Downloader" Height="150" Width="1200">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="41*"/>
             <RowDefinition Height="43*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Youtube URL:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="23"/>
-        <TextBox x:Name="txtUrl" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="957" Margin="100,0,0,0"/>
-        <Button x:Name="btnDownload" Content="Download" HorizontalAlignment="Left" Margin="1088,0,0,0" VerticalAlignment="Center" Width="75"/>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,38,0,0" VerticalAlignment="Center" Height="72" Width="1000" Grid.RowSpan="2">
-            <RadioButton x:Name="pathOne" Content="Path One" VerticalAlignment="Center" Padding="5,0,100,0" GroupName="DownloadPath"/>
+        <TextBlock Text="URL:" HorizontalAlignment="Left" TextAlignment="Center" Margin="10,0,0,0" VerticalAlignment="Center" Height="23" Width="73"/>
+        <TextBox x:Name="Url" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="957" Margin="100,0,0,0"/>
+        <Button x:Name="btnDownload" Content="Download" Click="DownloadButton_Click" HorizontalAlignment="Left" Margin="1088,0,0,0" VerticalAlignment="Center" Width="75">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="True" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=Url}" Value="">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <StackPanel x:Name="PathGroup" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,38,0,0" VerticalAlignment="Center" Height="72" Width="1000" Grid.RowSpan="2">
+            <RadioButton x:Name="pathOne" Content="Path One" IsChecked="true" VerticalAlignment="Center" Padding="5,0,100,0" GroupName="DownloadPath"/>
             <RadioButton x:Name="pathTwo" Content="Path Two" VerticalAlignment="Center" Padding="5,0,100,0" GroupName="DownloadPath"/>
             <RadioButton x:Name="pathThree" Content="Path Three" VerticalAlignment="Center" Padding="5,0,100,0" GroupName="DownloadPath"/>
             <RadioButton x:Name="pathFour" Content="Path Four" VerticalAlignment="Center" Padding="5,0,100,0" GroupName="DownloadPath"/>
             <RadioButton x:Name="pathFive" Content="Path Five" VerticalAlignment="Center" Padding="5,0,100,0" GroupName="DownloadPath"/>
             <RadioButton x:Name="pathSix" Content="Path Six" VerticalAlignment="Center" Padding="5,0,100,0" GroupName="DownloadPath"/>
         </StackPanel>
+        <TextBlock x:Name="Status" HorizontalAlignment="Center" Visibility="Hidden" Foreground="Red" FontWeight="Bold" TextWrapping="Wrap" Text="Music is downloading, please wait..." VerticalAlignment="Top" Margin="0,35,0,0" Grid.Row="1" Width="1000"/>
     </Grid>
 </Window>
