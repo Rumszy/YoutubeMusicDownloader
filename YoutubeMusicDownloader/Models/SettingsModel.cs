@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-namespace YoutubeMusicDownloader.Models
+﻿namespace YoutubeMusicDownloader.Models
 {
     public class SettingsModel
     {

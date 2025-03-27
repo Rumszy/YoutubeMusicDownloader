@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System.Windows;
 using YoutubeMusicDownloader.Models;
-using YoutubeMusicDownloader.Services;
 
 namespace YoutubeMusicDownloader
 {
@@ -37,9 +36,6 @@ namespace YoutubeMusicDownloader
             // Register settings
             services.Configure<SettingsModel>(configuration.GetSection("SettingsModel"));
             services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<SettingsModel>>().Value);
-
-            // Register your services here
-            services.AddTransient<IYoutubeService, YoutubeService>();
 
             // Register the main window
             services.AddTransient<MainWindow>();
